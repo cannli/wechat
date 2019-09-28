@@ -30,6 +30,7 @@ const rq = require('request-promise-native')   // 会返回一个promise
 const {writeFile, readFile} = require('fs')
 
 const {appID, appSecret} = require('./config')
+const menu = require('./menu')
 
 class Wechat {
     constructor() {
@@ -135,49 +136,52 @@ class Wechat {
                     // 将数据挂载到this
                     this.access_token = res.access_token
                     this.expires_in = res.expires_in
-                    console.log(res,'return')
+                    console.log(res, 'return')
                     return Promise.resolve(res)
                 })
         )
     }
+
+    /*
+    *创建自定义菜单
+    * */
+    createMenu(menu) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const data = await this.fetchAccessToken()
+                const url = ` https://api.weixin.qq.com/cgi-bin/menu/create?access_token=${data.access_token}`
+                // 发送请求
+                const result = await rq({method: 'POST', url, json: true, body: menu})
+                resolve(result)
+            } catch (e) {
+                reject('createMenu方法出问题了,' + e)
+            }
+        })
+    }
+
+    /*
+    * 删除菜单
+    * */
+    deleteMenu() {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const data = await this.fetchAccessToken()
+                const url = ` https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=${data.access_token}`
+                // 发送请求
+                const result = await rq({method: 'GET', url, json: true})
+                resolve(result)
+            } catch (e) {
+                reject('deleteMenu方法出问题了,' + e)
+            }
+        })
+    }
 }
 
-const w = new Wechat()
 
-// 获取token模拟
-// new Promise((resolve, reject) => {
-//     w.readAccessToken()
-//         .then(res => {
-//             // 有文件时，也要判断有没有过期
-//             if (w.isValidAccessToken(res)) {
-//                 // 有效的
-//                 resolve(res)
-//             } else {
-//                 // 过期了， 重新请求
-//                 w.getAccessToken()
-//                     .then(res => {
-//                         w.saveAccessToken(res)
-//                             .then(() => {
-//                                 resolve(res)
-//                             })
-//                     })
-//             }
-//
-//         })
-//         .catch(err => {
-//             // 没有文件，重新请求
-//             w.getAccessToken()
-//                 .then(res => {
-//                     w.saveAccessToken(res)
-//                         .then(() => {
-//                             resolve(res)
-//                         })
-//                 })
-//
-//         })
-// }).then(res => {
-//     console.log(res, '请求成功')
-// }).catch(err => {
-//     console.log('请求失败' + err)
-// })
- w.fetchAccessToken()
+(async () => {
+    const w = new Wechat()
+    let result = await w.deleteMenu()
+    console.log(result, 'delete')
+    result = await w.createMenu(menu)
+    console.log(result, 'create')
+})()
