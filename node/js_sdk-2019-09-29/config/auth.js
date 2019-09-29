@@ -9,6 +9,25 @@ const reply = require('./reply')
 //     timestamp: '1569495280',
 //     nonce: '1566103464'
 // }
+
+// module.exports = () => {
+//     return (req, res, next) => {
+//         const {signature, echostr, timestamp, nonce} = req.query
+//         const {token} = config
+//         console.log(`${signature}---${echostr}---${timestamp}---${nonce}---${token}`)
+//         const arrStr = [timestamp, nonce, token].sort().join('')
+//         const sha1Str = sha1(arrStr)
+//         console.log(sha1Str)
+//         if (sha1Str === signature) {
+//             console.log(sha1Str)
+//             res.send(echostr)
+//         } else {
+//             console.log('88')
+//             res.end('error')
+//         }
+//         console.log(req.query)
+//     }
+// }
 module.exports = () => {
     return async (req, res, next) => {
         const {signature, echostr, timestamp, nonce} = req.query

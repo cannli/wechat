@@ -1,4 +1,6 @@
 const {parseString} = require('xml2js')
+const {writeFile, readFile} = require('fs')
+const {resolve} = require('path')
 module.exports = {
     getUserDataAsync(req) {
         return new Promise((resolve, reject) => {
@@ -40,11 +42,42 @@ module.exports = {
             for (let key in jsData) {
                 // 获取属性值
                 let val = jsData[key]
-                if (Array.isArray(val) && val.length >0) {
+                if (Array.isArray(val) && val.length > 0) {
                     message[key] = val[0]
                 }
             }
         }
         return message
+    },
+
+    // 写文件的方法封装
+    writeFileAsync(data, fileName) {
+        const filePath = resolve(__dirname, fileName)
+        // 读写文件要将对象转成json
+        data = JSON.stringify(data)
+        // 将accessToken保存成一个文件
+        return new Promise((resolve, reject) => {
+            writeFile(filePath, data, err => {
+                if (!err) {
+                    resolve()
+                } else {
+                    reject('writeFileAsync接口出了问题' + err)
+                }
+            })
+        })
+    },
+    // 读取文件
+    readFileAsync(fileName) {
+        const filePath = resolve(__dirname, fileName)
+        return new Promise((resolve, reject) => {
+            readFile(filePath, (err, data) => {
+                if (!err) {
+                    console.log('文件读取成功~');
+                    resolve(JSON.parse(data))
+                } else {
+                    reject('readFileAsync接口出了问题' + err)
+                }
+            })
+        })
     }
 }
