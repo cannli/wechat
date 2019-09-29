@@ -19,10 +19,10 @@ app.get('/search', async (req, res) => {
     *   - 将其进行字典排序，以&连接
     *   - 进行shal加密，最终生成signature
     * */
-    const noncestr ='app_weewrew-canli' // Math.random().split('.')[1]
+    const noncestr = 'app_weewrew-canli' // Math.random().split('.')[1]
     const timestamp = Date.now()
     const {ticket} = await wechatApi.fetchTicket()
-
+    console.log(ticket, 'app')
     const arr = [
         `jsapi_ticket=${ticket}`,
         `noncestr=${noncestr}`,
@@ -31,9 +31,9 @@ app.get('/search', async (req, res) => {
     ]
     const str = arr.sort().join('&')
     const signature = sha1(str)
-    console.log(signatrue,'signature')
+    console.log(signature, 'signature')
     // 渲染页面，将渲染好的页面返回给用户
-    res.render('search',{
+    res.render('search', {
         signature,
         noncestr,
         timestamp
