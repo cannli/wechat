@@ -147,9 +147,7 @@
 <div class="cover">
     <button id="btn">点击开始录音</button>
 </div>
-<ul class="list">
-
-</ul>
+<ul class="list"></ul>
 <!--<script type="text/javascript" src="./js/rem.js"></script>-->
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
@@ -161,9 +159,36 @@
         - http://res.wx.qq.com/open/js/jweixin-1.2.0.js
       3. 通过config接口注入权限验证配置
      */
+    document.getElementById('btn').addEventListener('touchend', function () {
+       // const url = 'https://api.douban.com/v2/movie/search?callback=?&q=一场好戏';
+        let url =`https://douban.uieee.com/v2/movie/subject/25924056?callback=?`
+        $.getJSON(url, function (data) {
+            //显示在页面上
+            let html = '';
+
+            data.subjects.forEach(function (item) {
+                html += `<li class="item">
+                                                <a href="javascript:">
+                                                  <div class="cover">
+                                                    <img src="${item.images.small}" alt="${item.title}" data-x="2000" data-y="2963" class="img-show" style="width: 100%;">
+                                                  </div>
+                                                  <div class="info">
+                                                    <h3>${item.title}</h3>
+                                                    <p class="rank">
+                                                      <span>评分:</span>
+                                                      <span class="rating">${item.rating.average}</span>
+                                                    </p>
+                                                  </div>
+                                                </a>
+                                              </li>`
+            })
+            $('.list').html(html);
+        })
+    })
 
 
     window.onload = function () {
+
         wx.config({
             debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
             appId: 'wx96ad96c7e15b378a', // 必填，公众号的唯一标识
@@ -189,7 +214,7 @@
             success: function (res) {
                 // 以键值对的形式返回，可用的api值true，不可用为false
                 // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
-                console.log(res, 'jsApiList');
+                console.log(res, 'jsApiList-ok');
             },
             fail: function (err) {
                 console.log(err, 'fail');
@@ -215,7 +240,6 @@
                                 success: function (res) {
                                     alert(res.translateResult); // 语音识别的结果
                                     isRecord = false;
-
                                     //查询相应的电影信息
                                     //豆瓣api不允许跨域，使用jsonp解决
                                     const url = 'https://api.douban.com/v2/movie/search?callback=?&q=' + res.translateResult;
@@ -227,20 +251,20 @@
                                             let html = '';
 
                                             data.subjects.forEach(function (item) {
-                                                html += `<li class="item">
-                                    <a href="javascript:">
-                                      <div class="cover">
-                                        <img src="${item.images.small}" alt="${item.title}" data-x="2000" data-y="2963" class="img-show" style="width: 100%;">
-                                      </div>
-                                      <div class="info">
-                                        <h3>${item.title}</h3>
-                                        <p class="rank">
-                                          <span>评分:</span>
-                                          <span class="rating">${item.rating.average}</span>
-                                        </p>
-                                      </div>
-                                    </a>
-                                  </li>`
+                                              html += `<li class="item">
+                                                <a href="javascript:">
+                                                  <div class="cover">
+                                                    <img src="${item.images.small}" alt="${item.title}" data-x="2000" data-y="2963" class="img-show" style="width: 100%;">
+                                                  </div>
+                                                  <div class="info">
+                                                    <h3>${item.title}</h3>
+                                                    <p class="rank">
+                                                      <span>评分:</span>
+                                                      <span class="rating">${item.rating.average}</span>
+                                                    </p>
+                                                  </div>
+                                                </a>
+                                              </li>`
                                             })
 
                                             $('.list').html(html);
@@ -274,7 +298,6 @@
                         }
                     });
                 } else {
-                    alert(4444)
                     //开始录音
                     wx.startRecord();
                     isRecord = true;

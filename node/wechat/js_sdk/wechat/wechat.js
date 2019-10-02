@@ -262,13 +262,14 @@ class Wechat {
 }
 
 
-// (async () => {
-//     const w = new Wechat()
-//     // let result = await w.deleteMenu()
-//     // result = await w.createMenu(menu)
-//     // console.log(result, 'create')
-//     const data = w.fetchAccessToken()
-//     console.log(data)
-// })()
+(async () => {
+    const w = new Wechat()
+    // let result = await w.deleteMenu()
+    // result = await w.createMenu(menu)
+    // console.log(result, 'create')
+    const data = w.fetchAccessToken()
+    w.fetchTicket()
+    console.log(data)
+})()
 
 module.exports = Wechat

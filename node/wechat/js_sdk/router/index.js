@@ -19,7 +19,7 @@ router.get('/search', async (req, res) => {
     const noncestr = String(Math.random()).split('.')[1]
     const timestamp = Date.now()
     const {ticket} = await wechatApi.fetchTicket()
-    console.log(ticket, 'app')
+
     const arr = [
         `jsapi_ticket=${ticket}`,
         `noncestr=${noncestr}`,
@@ -28,7 +28,7 @@ router.get('/search', async (req, res) => {
     ]
     const str = arr.sort().join('&')
     const signature = sha1(str)
-    console.log(signature, 'signature')
+
     // 渲染页面，将渲染好的页面返回给用户
     res.render('search', {
         signature,

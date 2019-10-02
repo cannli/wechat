@@ -9,5 +9,5 @@ app.set('views', './views');
 app.set('view engine', 'ejs');
 // 应用页面路由
 app.use(router)
-app.listen(1234)
-console.log('Listening:1234')
+app.listen(3000)
+console.log('Listening:3000')
