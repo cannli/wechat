@@ -85,7 +85,6 @@ class Wechat {
         return new Promise((resolve, reject) => {
             readFile('./accessToken.txt', accessToken, (err, data) => {
                 if (!err) {
-                    console.log('文件读取成功~');
                     resolve(data.JSON.parse)
                 } else {
                     reject('readAccessToken接口出了问题' + err)

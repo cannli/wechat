@@ -40,7 +40,7 @@ module.exports = () => {
             // 再根据自己的要求转成想要的js对象格式
             let message = formatMessage(jsData)
             // 微信服务器返回数据处理
-            let options = reply(message)
+            let options = await reply(message)
             // 将xml转成对象
             // { ToUserName: 'gh_ebd3b20f4f1d',
             //     FromUserName: 'odN-ZxOr2DrPNx-SKgWN8A9ENcjc',
@@ -54,6 +54,7 @@ module.exports = () => {
 
             // 把将要返回给微信客服端的数据再转成xml
             let replyMessage = template(options)
+            console.log(replyMessage,'replyMessage')
             // 返回响应给微信服务器
             res.send(replyMessage)
             //  res.end('')

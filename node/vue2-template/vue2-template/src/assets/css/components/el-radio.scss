@@ -1,0 +1,10 @@
+.el-radio__input.is-disabled.is-checked .el-radio__inner{
+  background-color: #00a2ff;
+  border-color: #00a2ff;
+}
+.el-radio__input.is-disabled+span.el-radio__label {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(0,0,0,.65);
+  cursor: not-allowed;
+}

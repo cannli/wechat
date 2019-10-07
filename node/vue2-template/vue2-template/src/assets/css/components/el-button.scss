@@ -1,0 +1,38 @@
+.el-button--text {
+  color: #00A2FF !important;
+}
+
+.el-button--primary {
+  background: #00A2FF !important;
+  border-color: #00A2FF !important;
+}
+
+.el-button span {
+  font-weight: normal;
+}
+
+/*修改el-button的样式 通过添加class*/
+.defaultBut {
+  color: #00a2ff;
+  border: #00a2ff 1px solid;
+  padding: 10px 11px;
+  border-radius: 2px;
+}
+
+.defaultBut:hover {
+  background: #ffffff;
+}
+
+.el-dropdown {
+  .el-button-group {
+    .el-button {
+      padding: 10px 11px;
+    }
+    .el-dropdown__caret-button{
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+}.oldOne .el-button:focus, .oldOne  .el-button:hover{
+   border-color: #00A2FF;
+ }

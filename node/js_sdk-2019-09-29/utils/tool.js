@@ -72,7 +72,6 @@ module.exports = {
         return new Promise((resolve, reject) => {
             readFile(filePath, (err, data) => {
                 if (!err) {
-                    console.log('文件读取成功~');
                     resolve(JSON.parse(data))
                 } else {
                     reject('readFileAsync接口出了问题' + err)

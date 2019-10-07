@@ -4,6 +4,9 @@ const sha1 = require('sha1')
 const reply = require('../reply/index')
 // 引入配置文件
 const {url} = require('../config/config')
+//引入Theaters
+const Theaters = require('../model/Theaters');
+
 const Wechat = require('../wechat/wechat')
 const wechatApi = new Wechat()
 // 创建路由器对象
@@ -35,6 +38,23 @@ router.get('/search', async (req, res) => {
         noncestr,
         timestamp
     })
+})
+//详情页面路由
+router.get('/detail/:id', async (req, res) => {
+    //获取占位符id的值
+    const {id} = req.params;
+    console.log(id,999999)
+    //判断id值是否存在
+    if (id) {
+        //去数据库中找到对应id值得所有数据
+        const data = await Theaters.findOne({doubanId: id}, {_id: 0, __v: 0, createTime: 0, doubanId: 0});
+        console.log(data);
+        //渲染到页面上
+        res.render('detail', {data});
+    } else {
+        res.end('error');
+    }
+
 })
 /*
 * - 开发者服务器 - 验证消息是否来自服务器

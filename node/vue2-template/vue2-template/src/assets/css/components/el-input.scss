@@ -1,0 +1,76 @@
+.el-checkbox {
+  font-weight: 400;
+}
+
+.el-input-number.is-controls-right .el-input__inner {
+  padding-left: 15px;
+  text-align: left;
+}
+
+//状态已确认和未确认
+.sucessBtn {
+  display: inline-block;
+  width: 60px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+  font-size: 12px;
+  border: 1px solid #91D5FFFF;
+  background: #E6F7FFFF;
+  color: #00A2FFFF;
+  border-radius: 2px;
+}
+
+.errBtn {
+  border: 1px solid #FFBE60FF;
+  background: #FFF7EBFF;
+  color: #FF9600FF;
+}
+
+//
+.el-form-item {
+  margin-bottom: 20px;
+}
+
+/*
+cannli
+el-input-number
+*/
+.el-input-number__increase {
+  top: 2px;
+}
+
+.el-checkbox__inner:after {
+  transform: rotate(45deg) scaleY(0);
+  -moz-transform: rotate(45deg) scaleY(0);
+  -o-transform: rotate(45deg) scaleY(0);
+  -ms-transform: rotate(45deg) scaleY(0);
+}
+
+// 多选，超出长度的...表示，不能换行
+.el-select .el-tag {
+  box-sizing: border-box;
+  border-color: transparent;
+  margin: 2px 0 2px 6px;
+  background-color: #f0f2f5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.el-date-editor input {
+  vertical-align: top;
+}
+
+// 把input的num输入框改造成只能输入数字的输入框
+.inputNumStyel {
+  span {
+    display: none;
+  }
+  .el-input {
+    .el-input__inner {
+      padding-right: 15px;
+    }
+  }
+
+}

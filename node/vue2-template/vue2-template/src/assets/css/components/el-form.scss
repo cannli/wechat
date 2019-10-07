@@ -1,0 +1,55 @@
+.el-form-item.is-success .el-input__inner {
+  border-color: #e4e7ed
+}
+
+/*form里面文字的间距*/
+.el-form-item--medium .el-form-item__label {
+  line-height: 0;
+  font-size: 12px;
+  color: #80848f;
+}
+.sendMail {
+  .el-form-item--medium .el-form-item__label {
+    line-height: 36px;
+  }
+}
+/*多选按钮选择是的颜色*/
+.el-checkbox__input.is-checked + .el-checkbox__label {
+  color: #00a2ff;
+}
+
+.input67 {
+  width: 67%;
+}
+
+// 需要问号时的样式
+.popover-p {
+  position: relative;
+  cursor: pointer;
+  .popover {
+    position: absolute;
+    top: -30px;
+    //left: 80px;
+    left: 82px;
+  }
+  .popover-left {
+    left: 145px;
+  }
+}
+
+/*面包*/
+.el-input__inner {
+  border-radius: 0;
+}
+
+.el-input.is-disabled .el-input__inner {
+  color: #3e4047;
+}
+
+/*.el-form-item.is-success .el-input__inner, .el-form-item.is-success .el-input__inner:focus, .el-form-item.is-success .el-textarea__inner, .el-form-item.is-success .el-textarea__inner:focus {
+  border-color: #409eff; //#dcdfe6;  409eff
+}*/
+
+/*.el-form-item.is-success .el-input__inner, .el-form-item.is-success .el-input__inner:blur, .el-form-item.is-success .el-textarea__inner, .el-form-item.is-success .el-textarea__inner:blur {
+  border-color: #409eff; //#dcdfe6;
+}*/

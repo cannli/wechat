@@ -1,0 +1,50 @@
+.pmclass .el-select__tags {
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  top: 5px;
+  -webkit-transform: translateY(-0%);
+  transform: translateY(-0%);
+  display: -webkit-box;
+  margin-left: 4px;
+}
+
+.pmclass .el-select__tags::-webkit-scrollbar {
+  display: none
+}
+.changeSelect{
+  .el-select__tags{
+    max-height: 36px;
+    .el-tag--info{
+      margin-top: 4px;
+      &:first-child{
+        max-width:140px;
+        display: inline-block;
+        overflow: hidden;
+        vertical-align: middle;
+        .el-select__tags-text{
+          max-width:106px;
+          display: inline-block;
+          overflow: hidden;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+  .el-input__inner{
+    max-height: 36px;
+  }
+}
+.el-select-dropdown__item.hover, .el-select-dropdown__item:hover{
+  background: #fff;
+  color:#00a2ff;
+}
+//.el-date-table td.today span{
+//  color:#00A2FF!important;
+//}
+.el-date-table td.end-date span, .el-date-table td.start-date span{
+  background-color:#00A2FF;
+}
+.el-autocomplete-suggestion li:hover{
+  color: #00A2FF;
+}

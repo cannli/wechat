@@ -1,0 +1,120 @@
+
+.mod-steps {
+  margin: 10px auto 20px auto;
+  background: #ffffff;
+  padding: 40px 0 38px 0;
+  .step-ol {
+    width: 100%;
+    padding-top: 20px;
+    zoom: 1;
+    overflow: hidden;
+    .step-li {
+      position: relative;
+      float: left;
+      width: 12.5%;
+      padding: 26px 0 0;
+      border-top: 2px solid #b2b2b2;
+      text-align: center;
+      color: #b2b2b2;
+      .step-ico {
+        position: absolute;
+        left: 50%;
+        top: -20px;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        margin-left: -16px;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 18px;
+        color: #c0c4cc;
+        z-index: 2;
+        background-color: #f5f5f5;
+        box-sizing: border-box;
+        overflow: hidden;
+        cursor: not-allowed;
+      }
+      .step-text {
+        margin-top: 5px;
+        display: block;
+        font-size: 16px;
+        line-height: 20px;
+        color: #c0c4cc;
+        cursor: not-allowed;
+        .textNow {
+          cursor: pointer;
+          font-weight: 700;
+          color: rgba(0, 0, 0, .85)
+        }
+        .text {
+          cursor: pointer;
+          color: #000;
+        }
+        .text-subtitle{
+          font-size:12px;
+          font-weight:400;
+          color:rgba(0,0,0,.45);
+        }
+      }
+    }
+    .over {
+      border-color: #11adfe;
+      .accomplish { // 完成后的样式
+        background-color: #ffffff;
+        border: #00a2ff solid 2px;
+        color: #00a2ff;
+        font-size: 20px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+    }
+    .edit {
+      border-color: #ff9600;
+      .edit { // 没有确认的步骤
+        border: none;
+        background: #ff9600;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+    .now { // 当前样式
+      border: none;
+      background-color: #00a2ff !important;
+      color: #ffffff !important;
+      cursor: pointer !important;
+    }
+    .step-li:first-of-type:after,
+    .step-li:last-of-type:after {
+      content: "";
+      position: absolute;
+      top: -2px;
+      width: 50%;
+      height: 3px;
+      background-color: #ffffff;
+      z-index: 1;
+    }
+    .step-li:first-of-type:after {
+      left: 0
+    }
+    .step-li:last-of-type:after {
+      right: 0
+    }
+  }
+  .step-ol:after {
+    content: "";
+    clear: both;
+    display: block;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    visibility: hidden
+  }
+  .steps-icon {
+    position: relative;
+    top: -12px;
+    float: left;
+    width: 12.5%;
+    text-align: center;
+    color: #b2b2b2;
+  }
+}

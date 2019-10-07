@@ -1,0 +1,69 @@
+
+.el-table th > .cell {
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.el-table td > .cell {
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.el-table th {
+  background: #FAFAFA;
+  // border-top: 1px solid #e9e9e9;
+}
+
+.el-table--enable-row-hover .el-table__body tr:hover > td {
+  background-color: #ecf5ff !important;
+}
+
+// el-tab-pane样式
+.el-tabs__item.is-active {
+  color: #00A2FF;
+}
+
+.el-tabs--border-card > .el-tabs__header .el-tabs__item.is-active {
+  color: #00A2FF !important;
+}
+
+// 收益分配详情table行高 51
+.tableHeight .el-table--medium td, .el-table--medium th {
+  height: 51px;
+}
+
+// table 行高41
+.smallTableHeight .el-table .cell {
+  line-height: 20px;
+}
+
+.el-table .errClass {
+  // background: #ffcccc;
+}
+
+.tableStyleHeight41 .el-table--small td, .el-table--small th {
+  padding: 5px 0;
+}
+.tableStyleHeight41 .el-table .cell{
+  height:20px;
+  line-height: 20px;
+  font-size: 12px;
+}
+.tableStyleHeight41 .el-table thead th{
+  height:41px;
+}
+
+.el-tabs__active-bar {
+  background-color: #00a2ff !important;
+}
+
+// 是金额展示时右边加间距
+.el-table th.is-right {
+  padding-right: 50px;
+}
+
+.td-right {
+  padding-right: 50px;
+}
+
+.close-table-p.el-table th.is-right {
+  padding-right: 0;
+}
