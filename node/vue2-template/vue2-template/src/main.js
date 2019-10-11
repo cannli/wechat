@@ -1,16 +1,11 @@
-//import 'babel-polyfill'
+import 'babel-polyfill'
 import Vue from 'vue'
-//import './element/index.js'
-//import 'normalize.css' // A modern alternative to CSS resets
-//import 'element-ui/lib/theme-chalk/index.css'
-
+import './element/index.js'
+import 'normalize.css' // A modern alternative to CSS resets
 
 import router from './router'
 import ku from './assets/js/ku.js'
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
 import 'assets/icon/iconfontXin.css'
-Vue.use(ElementUI);
 import common from './assets/js/common'
 import store from './store'
 import App from './App.vue'

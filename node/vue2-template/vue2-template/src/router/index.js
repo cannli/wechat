@@ -4,7 +4,7 @@ import {data} from './breadcrumb.js'
 // import store from '../store/index.js'
 
 Vue.use(Router)
-const home = resolve => require(['../components/common/layout/home.vue'], resolve)
+const home = resolve => require(['../components/container/home.vue'], resolve)
 // 项目概况
 // const dataEvaluate = resolve => require(['../components/pages/overview/data_evaluate.vue'], resolve)
 // const dataImportHistoryDataImport = resolve => require(['../components/pages/overview/data_import.vue'], resolve)
