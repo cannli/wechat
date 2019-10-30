@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <canvas id="canvasElem">
+        不支持canvas
+    </canvas>
+    <script>
+        (function () {
+            var canvas = document.querySelector('#canvasElem')
+            var ctx = canvas.getContext('2d')
+            canvas.width = 600
+            canvas.height = 600
+            canvas.style.border = '1px solid #000'
+
+            // 画横线
+            var rectH = 10
+            var rectW = 10
+            for (var i = 0; i < canvas.width / rectH; i++) {
+                ctx.moveTo(0, i * rectH)
+                ctx.lineTo(canvas.width, i * rectH)
+
+                // 绘制竖线
+                ctx.moveTo(i * rectW, )
+            }
+            ctx.stroke()
+        })()
+    </script>
+</div>
+
+</body>
+</html>
