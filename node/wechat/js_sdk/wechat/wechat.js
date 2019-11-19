@@ -37,9 +37,7 @@ const api = require('../utils/api.js')
 const {writeFileAsync,readFileAsync} = require('../utils/tool')
 
 class Wechat {
-    constructor() {
-    }
-
+    constructor() {}
     /*
     * 获取access_token
     * { access_token: '25_T6tsWKB7EALkrcWdeyYqdKsIfQ41oYEW65FF1gg4au97MDmIt-
@@ -96,33 +94,33 @@ class Wechat {
             // 说明之前保存过token,并且是有效的
             return Promise.resolve({access_token: this.access_token, expires_in: this.expires_in})
         }
-        return (this.readAccessToken()
-                .then(async res => {
-                    // 有文件时，也要判断有没有过期
-                    if (this.isValidAccessToken(res)) {
-                        // 有效的
-                        return Promise.resolve(res)
-                    } else {
-                        // 过期了， 重新请求
-                        const res = await this.getAccessToken()
-                        // 保存起来
-                        await this.saveAccessToken(res)
-                        return Promise.resolve(res)
-                    }
-                })
-                .catch(async err => {
-                    // 没有文件，重新请求
+        let then = this.readAccessToken()
+            .then(async res => {
+                // 有文件时，也要判断有没有过期
+                if (this.isValidAccessToken(res)) {
+                    // 有效的
+                    return Promise.resolve(res)
+                } else {
+                    // 过期了， 重新请求
                     const res = await this.getAccessToken()
+                    // 保存起来
                     await this.saveAccessToken(res)
                     return Promise.resolve(res)
-                }).then(res => {
-                    // 将数据挂载到this
-                    this.access_token = res.access_token
-                    this.expires_in = res.expires_in
-                    console.log(res, 'return-token')
-                    return Promise.resolve(res)
-                })
-        )
+                }
+            })
+            .catch(async err => {
+                // 没有文件，重新请求
+                const res = await this.getAccessToken()
+                await this.saveAccessToken(res)
+                return Promise.resolve(res)
+            }).then(res => {
+                // 将数据挂载到this
+                this.access_token = res.access_token
+                this.expires_in = res.expires_in
+                console.log(res, 'return-token')
+                return Promise.resolve(res)
+            });
+        return then
     }
 
     /*
@@ -252,7 +250,7 @@ class Wechat {
                     return Promise.resolve(res)
                 }).then(res => {
                     // 将数据挂载到this
-                    this.ticket = res.access_token
+                    this.ticket = res.ticket
                     this.ticket_expires_in = res.expires_in
                     console.log(res, 'return')
                     return Promise.resolve(res)
